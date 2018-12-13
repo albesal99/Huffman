@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Programming/CLion/HuffmanEncoding/encoding.h
+string
+-
+vector
+-
+
+E:/Programming/CLion/HuffmanEncoding/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+cstdlib
+-
+cctype
+-
+encoding.h
+E:/Programming/CLion/HuffmanEncoding/encoding.h
+
