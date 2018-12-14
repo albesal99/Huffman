@@ -11,6 +11,8 @@ string
 -
 vector
 -
+tuple
+-
 
 E:/Programming/CLion/HuffmanEncoding/main.cpp
 iostream

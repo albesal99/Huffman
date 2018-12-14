@@ -8,12 +8,8 @@
 using namespace std;
 
 int main() {
-    string filename = "E:\\Programming\\CLion\\HuffmanEncoding\\file1.txt";
-    vector<int> c_list = cnt_freq(filename);
-    for (int i = 0; i < 256; i++) {
-        if (c_list[i] != 0) {
-            cout << c_list[i] << " ";
-        }
-    }
+    string filename = "E:\\Programming\\CLion\\HuffmanEncoding\\file_WAP.txt";
+    string filename_out = "E:\\Programming\\CLion\\HuffmanEncoding\\file_WAP_out.txt";
+    huffman_encode(filename, filename_out);
     exit(0);
 }
