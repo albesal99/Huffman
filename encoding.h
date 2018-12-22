@@ -28,7 +28,7 @@ void create_codes_helper(HuffmanNode*, std::vector<std::string> &, std::string);
 std::vector<std::string> create_codes(HuffmanNode*);
 static inline void rtrim (std::string &);
 std::string create_header(std::vector<int>);
-
+bool empty_file(std::ifstream&);
 void huffman_encode(std::string, std::string);
 
 #endif //HUFFMANENCODING_ENCODING_H

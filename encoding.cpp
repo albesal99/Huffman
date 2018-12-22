@@ -136,6 +136,7 @@ HuffmanNode* create_huff_tree(vector<int> freq_list) {
             return a->character < b->character;
         });
     }
+    return freq_vector.front();
 }
 
 void create_codes_helper(HuffmanNode* node, vector<string> &code_vector, string current_code) {
@@ -171,7 +172,12 @@ string create_header(vector<int> freq_list) {
         }
     }
     rtrim(output_string);
+    cout << output_string << endl;
     return output_string;
+}
+
+bool empty_file(ifstream &file_in) {
+    return file_in.peek() == ifstream::traits_type::eof();
 }
 
 void huffman_encode(string file_in, string file_out) {
@@ -183,27 +189,29 @@ void huffman_encode(string file_in, string file_out) {
     }
     ofstream output_file;
     output_file.open(file_out.c_str());
-    vector<int> character_vector = cnt_freq(file_in);
-    HuffmanNode *huffman_tree = create_huff_tree(character_vector);
-    vector<string> codes = create_codes(huffman_tree);
-    string header = create_header(character_vector);
-    int header_space_count = 0;
-    for (int i = 0; i < header.length(); i++) {
-        if (header[i] == 32) {
-            header_space_count++;
+    if (!empty_file(input_file)) {
+        vector<int> character_vector = cnt_freq(file_in);
+        HuffmanNode *huffman_tree = create_huff_tree(character_vector);
+        vector<string> codes = create_codes(huffman_tree);
+        string header = create_header(character_vector);
+        int header_space_count = 0;
+        for (int i = 0; i < header.length(); i++) {
+            if (header[i] == 32) {
+                header_space_count++;
+            }
         }
-    }
-    if (header_space_count > 1) {
-        header += "\n";
-    }
-    output_file << header;
-    if (!input_file.is_open()) {
-        cout << "Unable to open file" << endl;
-        exit(1);
-    }
-    char character;
-    while (input_file >> noskipws >> character) {
-        output_file << codes[character];
+        if (header_space_count > 1) {
+            header += "\n";
+        }
+        output_file << header;
+        if (!input_file.is_open()) {
+            cout << "Unable to open file" << endl;
+            exit(1);
+        }
+        char character;
+        while (input_file >> noskipws >> character) {
+            output_file << codes[character];
+        }
     }
     input_file.close();
     output_file.close();
